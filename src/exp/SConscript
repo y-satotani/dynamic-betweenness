@@ -1,0 +1,15 @@
+Import('env')
+src_exe = [
+    'exp-compare-performance.c',
+    'exp-update-stats.c',
+    'exp-sequential-update.c',
+    'exp-betweenness-stats.c',
+    'exp-calculate-cache.c',
+]
+src_lib = [
+    'dybc_exp_common.c',
+    'dybc_io.c',
+    'dybc_batch_update.c',
+]
+prog = [env.Program([s]+src_lib) for s in src_exe] + [env.File('run-artificial-experiments.py'), env.File('run-real-experiments.py')]
+Return('prog')
